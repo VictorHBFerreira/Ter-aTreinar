@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Animais</title>
+</head>
+<body>
+
+    <div layout:fragment="corpo">
+
+        <h1>Cadastro de animal</h1>
+
+        <div th:if="${msg != null}" class="alert alert-success" th:text="${msg}"></div>
+
+        <form th:action="@{/animal/cadastrar}" method="post" th:object="${animal}">
+            <div class="form-group">
+                <label>Nome</label>
+                <input th:field="*{nome}" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label>Raça</label>
+                <input th:field="*{raca}" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <input th:field="*{castrado}" type="checkbox">
+                <label>Castrado</label>
+            </div>
+            <div class="form-group">
+                <label>Data de Nascimento</label>
+                <input th:field="*{dataNasc}" class="form-control" type="text">
+            </div>
+            <input type="submit" value="Cadastrar" class="btn btn-primary">
+
+        </form>
+
+    </div>
+
+</body>
+</html>
